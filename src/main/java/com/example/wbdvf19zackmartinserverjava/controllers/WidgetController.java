@@ -22,6 +22,7 @@ public class WidgetController {
     public List<Widget> updateWidget(
             @PathVariable("widgetId") Integer id,
             @RequestBody Widget newWidget) {
+        System.out.println("WE ARE HERE " + id);
         return service.updateWidget(id, newWidget);
     }
 

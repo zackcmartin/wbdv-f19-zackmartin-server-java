@@ -16,16 +16,20 @@ public class WidgetService {
     }
     List<Widget> widgets = new ArrayList<Widget>();
     {
-        Widget w1 = new Widget(123, "Heading Widget", "HEADING");
-        Widget w2 = new Widget(234, "List Widget", "LIST");
-        Widget w3 = new Widget(345, "Paragraph Widget", "PARAGRAPH");
+        Widget w1 = new Widget(123, "Heading Widget", "HEADING", 1);
+        Widget w2 = new Widget(234, "List Widget", "LIST", 2);
+        Widget w3 = new Widget(345, "Paragraph Widget", "PARAGRAPH", 3);
         widgets.add(w1);
         widgets.add(w2);
         widgets.add(w3);
     }
 
+    int orderPlace = 4;
+
     public List<Widget> createWidget(Widget widget) {
+        widget.setOrderPlace(orderPlace);
         widgets.add(widget);
+        orderPlace++;
         return widgets;
     }
 
@@ -33,6 +37,12 @@ public class WidgetService {
         for(Widget w: widgets) {
             if(w.getId() == id) {
                 w.setName(newWidget.getName());
+                w.setType(newWidget.getType());
+                w.setText(newWidget.getText());
+                w.setUrl(newWidget.getUrl());
+                w.setOrdered(newWidget.getOrdered());
+                w.setOrderPlace(newWidget.getOrderPlace());
+                w.setSize(newWidget.getSize());
             }
         }
         return widgets;
