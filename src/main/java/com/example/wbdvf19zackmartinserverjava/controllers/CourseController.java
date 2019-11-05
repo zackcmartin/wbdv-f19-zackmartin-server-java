@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@RestController
+@CrossOrigin(origins = "*")
 public class CourseController {
 
     CourseService service = CourseService.getInstance();
@@ -19,12 +22,12 @@ public class CourseController {
     public List<Course> updateCourse(
             @PathVariable("courseId") Integer id,
             @RequestBody Course newCourse) {
-        System.out.println("WE ARE HERE " + id);
         return service.updateCourse(id, newCourse);
     }
 
     @DeleteMapping("/api/courses/{courseId}")
     public List<Course> deleteCourse(@PathVariable("courseId") Integer id) {
+        System.out.println("WE ARE HERE " + id);
         return service.deleteCourse(id);
     }
 

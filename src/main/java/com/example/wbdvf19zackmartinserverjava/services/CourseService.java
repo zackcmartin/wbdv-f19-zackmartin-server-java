@@ -18,10 +18,10 @@ public class CourseService {
 
     List<Course> courses = new ArrayList<Course>();
     {
-        Course c1 = new Course(123, "Course 1");
-        Course c2 = new Course(234, "Course 2");
-        Course c3 = new Course(345, "Course 3");
-        Course c4 = new Course(345, "Course 4");
+        Course c1 = new Course(123, "Course 1 from Server");
+        Course c2 = new Course(234, "Course 2 from Server");
+        Course c3 = new Course(345, "Course 3 from Server");
+        Course c4 = new Course(546, "Course 4 from Server");
         courses.add(c1);
         courses.add(c2);
         courses.add(c3);
@@ -31,7 +31,8 @@ public class CourseService {
     int orderPlace = 4;
 
     public List<Course> createCourse(Course course) {
-        courses.add(course);
+        Course c = new Course(course.getId(), course.getTitle());
+        courses.add(c);
         orderPlace++;
         return courses;
     }
@@ -48,7 +49,7 @@ public class CourseService {
     public List<Course> deleteCourse(Integer id) {
         int index = -1;
         for(int i=0; i<courses.size(); i++) {
-            if(courses.get(i).getId() == id) {
+            if(courses.get(i).getId().equals(id)) {
                 index = i;
             }
         }

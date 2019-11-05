@@ -20,9 +20,9 @@ public class WidgetService {
     }
     List<Widget> widgets = new ArrayList<Widget>();
     {
-        Widget w1 = new Widget(123, "Heading Widget", "HEADING", 1);
-        Widget w2 = new Widget(234, "List Widget", "LIST", 2);
-        Widget w3 = new Widget(345, "Paragraph Widget", "PARAGRAPH", 3);
+        Widget w1 = new Widget(123, "", "HEADING", 1);
+        Widget w2 = new Widget(234, "", "LIST", 2);
+        Widget w3 = new Widget(345, "", "PARAGRAPH", 3);
         widgets.add(w1);
         widgets.add(w2);
         widgets.add(w3);

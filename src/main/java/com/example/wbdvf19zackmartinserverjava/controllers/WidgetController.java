@@ -4,7 +4,6 @@ import com.example.wbdvf19zackmartinserverjava.models.Widget;
 import com.example.wbdvf19zackmartinserverjava.services.WidgetService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
