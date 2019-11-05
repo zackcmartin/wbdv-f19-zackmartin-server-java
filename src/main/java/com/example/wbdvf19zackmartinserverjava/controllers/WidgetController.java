@@ -32,8 +32,8 @@ public class WidgetController {
     }
 
     @GetMapping("/api/widgets")
-    public List<Widget> findAllWidget() {
-        return service.findAllWidget();
+    public List<Widget> findAllWidgets() {
+        return service.findAllWidgets();
     }
 
     @GetMapping("/api/widgets/{widgetId}")

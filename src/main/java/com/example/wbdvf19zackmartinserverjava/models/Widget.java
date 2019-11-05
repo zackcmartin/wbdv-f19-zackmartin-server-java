@@ -11,9 +11,6 @@ public class Widget {
     private boolean ordered = false;
 
 
-    public Widget() {
-    }
-
     public Widget(int id, String name, String type, int orderPlace) {
         this.id = id;
         this.name = name;

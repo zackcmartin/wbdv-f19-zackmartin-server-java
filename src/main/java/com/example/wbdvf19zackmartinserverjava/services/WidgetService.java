@@ -14,6 +14,10 @@ public class WidgetService {
         }
         return myInstance;
     }
+
+    enum type {
+         HEADING, LIST, PARAGRAPH, IMAGE, LINK
+    }
     List<Widget> widgets = new ArrayList<Widget>();
     {
         Widget w1 = new Widget(123, "Heading Widget", "HEADING", 1);
@@ -59,7 +63,7 @@ public class WidgetService {
         return widgets;
     }
 
-    public List<Widget> findAllWidget() {
+    public List<Widget> findAllWidgets() {
         return widgets;
     }
 
