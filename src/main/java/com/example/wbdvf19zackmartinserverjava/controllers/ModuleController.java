@@ -49,7 +49,7 @@ public class ModuleController {
         return repository.findAllModulesForCourse(courseId);
     }
 
-    @GetMapping("/api/modules/{mid}")
+    @GetMapping("api/courses/{cid}/modules/{mid}")
     public Module findModuleById(@PathVariable("mid") Integer id) {
         return repository.findModuleById(id);
     }

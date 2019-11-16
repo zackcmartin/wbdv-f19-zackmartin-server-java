@@ -1,5 +1,6 @@
 package com.example.wbdvf19zackmartinserverjava.repositories;
 
+import com.example.wbdvf19zackmartinserverjava.models.Module;
 import com.example.wbdvf19zackmartinserverjava.models.Widget;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,5 +21,9 @@ public interface WidgetRepository extends CrudRepository<Widget, Integer> {
     @Transactional
     @Query("delete from Widget widget where widget.id=:widgetId")
     public void deleteWidgetsBy(@Param("widgetId") Integer id);
+
+    // select module from Module m, Course c where m.course_id = c.id
+    @Query("select widget from Widget widget where widget.module.id = :mid")
+    public List<Widget> findAllWidgetsForModule(@Param("mid") Integer moduleId);
 
 }

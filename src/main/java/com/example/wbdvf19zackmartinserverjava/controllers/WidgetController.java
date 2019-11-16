@@ -1,6 +1,9 @@
 package com.example.wbdvf19zackmartinserverjava.controllers;
 
+import com.example.wbdvf19zackmartinserverjava.models.Course;
+import com.example.wbdvf19zackmartinserverjava.models.Module;
 import com.example.wbdvf19zackmartinserverjava.models.Widget;
+import com.example.wbdvf19zackmartinserverjava.repositories.ModuleRepository;
 import com.example.wbdvf19zackmartinserverjava.repositories.WidgetRepository;
 import com.example.wbdvf19zackmartinserverjava.services.WidgetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,32 +19,42 @@ public class WidgetController {
     @Autowired
     WidgetRepository repository;
 
+    @Autowired
+    ModuleRepository moduleRepository;
 
-    @PostMapping("/api/widgets")
-    public List<Widget> createWidget(@RequestBody Widget widget) {
+
+    @PostMapping("/api/courses/{cid}/modules/{mid}/widgets")
+    public List<Widget> createWidget(@RequestBody Widget widget,
+                                     @PathVariable("mid") Integer mid) {
+        Module module = moduleRepository.findModuleById(mid);
+        widget.setModule(module);
         repository.save(widget);
-        return repository.findAllWidgets();
+        return repository.findAllWidgetsForModule(mid);
     }
 
-    @PutMapping("/api/widgets/{widgetId}")
+    @PutMapping("/api/courses/{cid}/modules/{mid}/widgets/{widgetId}")
     public List<Widget> updateWidget(
-            @RequestBody Widget newWidget) {
+            @RequestBody Widget newWidget,
+            @PathVariable("mid") Integer mid) {
+        Module module = moduleRepository.findModuleById(mid);
+        newWidget.setModule(module);
         repository.save(newWidget);
-        return repository.findAllWidgets();
+        return repository.findAllWidgetsForModule(mid);
     }
 
-    @DeleteMapping("/api/widgets/{widgetId}")
-    public List<Widget> deleteWidget(@PathVariable("widgetId") Integer id) {
+    @DeleteMapping("/api/courses/{cid}/modules/{mid}/widgets/{widgetId}")
+    public List<Widget> deleteWidget(@PathVariable("widgetId") Integer id,
+                                     @PathVariable("mid") Integer mid) {
         repository.deleteWidgetsBy(id);
-        return repository.findAllWidgets();
+        return repository.findAllWidgetsForModule(mid);
     }
 
-    @GetMapping("/api/widgets")
-    public List<Widget> findAllWidgets() {
-        return repository.findAllWidgets();
+    @GetMapping("/api/courses/{cid}/modules/{mid}/widgets")
+    public List<Widget> findAllWidgets(@PathVariable("mid") Integer mid) {
+        return repository.findAllWidgetsForModule(mid);
     }
 
-    @GetMapping("/api/widgets/{widgetId}")
+    @GetMapping("/api/courses/{cid}/modules/{mid}/widgets/{widgetId}")
     public Widget findWidgetById(@PathVariable("widgetId") Integer id) {
         return repository.findWidgetById(id);
     }
