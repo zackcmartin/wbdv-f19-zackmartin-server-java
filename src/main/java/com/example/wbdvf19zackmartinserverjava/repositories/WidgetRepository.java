@@ -20,7 +20,7 @@ public interface WidgetRepository extends CrudRepository<Widget, Integer> {
     @Modifying
     @Transactional
     @Query("delete from Widget widget where widget.id=:widgetId")
-    public void deleteWidgetsBy(@Param("widgetId") Integer id);
+    public void deleteWidgetBy(@Param("widgetId") Integer id);
 
     // select module from Module m, Course c where m.course_id = c.id
     @Query("select widget from Widget widget where widget.module.id = :mid")

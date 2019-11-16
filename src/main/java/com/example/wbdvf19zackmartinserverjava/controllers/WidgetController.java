@@ -45,7 +45,7 @@ public class WidgetController {
     @DeleteMapping("/api/courses/{cid}/modules/{mid}/widgets/{widgetId}")
     public List<Widget> deleteWidget(@PathVariable("widgetId") Integer id,
                                      @PathVariable("mid") Integer mid) {
-        repository.deleteWidgetsBy(id);
+        repository.deleteWidgetBy(id);
         return repository.findAllWidgetsForModule(mid);
     }
 

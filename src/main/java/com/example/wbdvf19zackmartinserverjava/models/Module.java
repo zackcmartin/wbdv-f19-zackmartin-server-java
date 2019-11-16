@@ -17,6 +17,10 @@ public class Module {
     @JsonIgnore
     private Course course;
 
+    @OneToMany(mappedBy = "module", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    //@ManyToMany
+    private List<Widget> widgets;
+
     public List<Widget> getWidgets() {
         return widgets;
     }
@@ -25,8 +29,6 @@ public class Module {
         this.widgets = widgets;
     }
 
-    @OneToMany(mappedBy = "module")
-    private List<Widget> widgets;
 
     public Course getCourse() {
         return course;

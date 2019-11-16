@@ -11,9 +11,10 @@ public class Course {
     private Integer id;
     private String title;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Module> modules;
 
+    @Transient
     public List<Module> getModules() {
         return modules;
     }
