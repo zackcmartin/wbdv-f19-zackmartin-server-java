@@ -1,44 +1,53 @@
 package com.example.wbdvf19zackmartinserverjava.controllers;
 
 import com.example.wbdvf19zackmartinserverjava.models.Course;
-import com.example.wbdvf19zackmartinserverjava.services.CourseService;
+import com.example.wbdvf19zackmartinserverjava.repositories.CourseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class CourseController {
 
-    CourseService service = CourseService.getInstance();
+    @Autowired
+    CourseRepository repository;
 
     @PostMapping("/api/courses")
     public List<Course> createCourse(@RequestBody Course course) {
-        return service.createCourse(course);
+        repository.save(course);
+        return repository.findAllCourses();
     }
 
     @PutMapping("/api/courses/{courseId}")
     public List<Course> updateCourse(
-            @PathVariable("courseId") Integer id,
             @RequestBody Course newCourse) {
-        return service.updateCourse(id, newCourse);
+        repository.save(newCourse);
+        return repository.findAllCourses();
     }
 
     @DeleteMapping("/api/courses/{courseId}")
     public List<Course> deleteCourse(@PathVariable("courseId") Integer id) {
-        System.out.println("WE ARE HERE " + id);
-        return service.deleteCourse(id);
+        repository.deleteCourseBy(id);
+        return repository.findAllCourses();
     }
 
     @GetMapping("/api/courses")
     public List<Course> findAllCourses() {
-        return service.findAllCourses();
+        return repository.findAllCourses();
     }
 
     @GetMapping("/api/courses/{courseId}")
     public Course findCourseById(@PathVariable("courseId") Integer id) {
-        return service.findCourseById(id);
+        return repository.findCourseById(id);
     }
 
+    // createWidget
+    // findAllWidgets
+    // findWidgetById
+    // updateWidget
+    // deleteWidget
 
 }

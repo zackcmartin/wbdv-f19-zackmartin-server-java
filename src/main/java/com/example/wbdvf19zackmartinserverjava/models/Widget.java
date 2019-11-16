@@ -1,25 +1,41 @@
 package com.example.wbdvf19zackmartinserverjava.models;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="widgets")
 public class Widget {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String type;
-    private int orderPlace;
+    private Integer orderPlace;
     private String text = "";
-    private int size = 1;
+    private Integer size = 1;
     private String url = "";
-    private boolean ordered = false;
+    private Boolean ordered = false;
 
 
-    public Widget(int id, String name, String type, int orderPlace) {
+    public Widget(){
+
+    }
+
+    public Widget(int id, String name, String type, Integer orderPlace) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.orderPlace = orderPlace;
     }
 
+    @ManyToOne
+    @JsonIgnore
+    private Module module;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -43,7 +59,7 @@ public class Widget {
         this.type = type;
     }
 
-    public int getOrderPlace(){
+    public Integer getOrderPlace(){
         return orderPlace;
     }
 
@@ -59,7 +75,7 @@ public class Widget {
         this.text = text;
     }
 
-    public int getSize() {
+    public Integer getSize() {
         return size;
     }
 
@@ -75,11 +91,19 @@ public class Widget {
         this.url = url;
     }
 
-    public boolean getOrdered() {
+    public Boolean getOrdered() {
         return ordered;
     }
 
     public void setOrdered(boolean b){
         this.ordered = b;
+    }
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
     }
 }

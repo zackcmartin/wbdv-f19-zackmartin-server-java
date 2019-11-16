@@ -1,12 +1,25 @@
 package com.example.wbdvf19zackmartinserverjava.models;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name="courses")
 public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
 
-    public Course(int id, String title){
-        this.id = id;
-        this.title = title;
+    @OneToMany(mappedBy = "course")
+    private List<Module> modules;
+
+    public List<Module> getModules() {
+        return modules;
+    }
+
+    public void setModules(List<Module> modules) {
+        this.modules = modules;
     }
 
     public Integer getId() {
