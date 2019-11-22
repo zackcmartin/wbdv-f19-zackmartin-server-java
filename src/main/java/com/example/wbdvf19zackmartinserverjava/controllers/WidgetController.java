@@ -61,7 +61,7 @@ public class WidgetController {
         return repository.findWidgetById(id);
     }
 
-    @GetMapping("/api/lessons")
+    @GetMapping("/api/widgets")
     public List<Widget> findAllWidgets() {
         return repository.findAllWidgets();
     }
