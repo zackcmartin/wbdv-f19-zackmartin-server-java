@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "https://wbdv-f19-zmartin-client-react.herokuapp.com")
+@CrossOrigin(origins = "*")
 public class CourseController {
 
     @Autowired

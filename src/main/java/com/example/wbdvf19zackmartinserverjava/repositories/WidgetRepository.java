@@ -23,7 +23,7 @@ public interface WidgetRepository extends CrudRepository<Widget, Integer> {
     public void deleteWidgetBy(@Param("widgetId") Integer id);
 
     // select module from Module m, Course c where m.course_id = c.id
-    @Query("select widget from Widget widget where widget.module.id = :mid")
-    public List<Widget> findAllWidgetsForModule(@Param("mid") Integer moduleId);
+    @Query("select widget from Widget widget where widget.topic.id = :tid")
+    public List<Widget> findAllWidgetsForTopic(@Param("tid") Integer topicId);
 
 }

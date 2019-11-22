@@ -33,7 +33,7 @@ public class Widget {
 
     @ManyToOne
     @JsonIgnore
-    private Module module;
+    private Topic topic;
 
     public Integer getId() {
         return id;
@@ -99,11 +99,11 @@ public class Widget {
         this.ordered = b;
     }
 
-    public Module getModule() {
-        return module;
+    public Topic getTopic() {
+        return topic;
     }
 
-    public void setModule(Module module) {
-        this.module = module;
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 }

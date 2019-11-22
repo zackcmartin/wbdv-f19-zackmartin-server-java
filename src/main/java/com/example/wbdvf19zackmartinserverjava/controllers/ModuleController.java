@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "https://wbdv-f19-zmartin-client-react.herokuapp.com")
+@CrossOrigin(origins = "*")
 public class ModuleController {
 
     @Autowired
@@ -49,7 +49,7 @@ public class ModuleController {
         return repository.findAllModulesForCourse(courseId);
     }
 
-    @GetMapping("api/courses/{cid}/modules/{mid}")
+    @GetMapping("api/modules/{mid}")
     public Module findModuleById(@PathVariable("mid") Integer id) {
         return repository.findModuleById(id);
     }

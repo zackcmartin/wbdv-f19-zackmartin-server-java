@@ -1,40 +1,40 @@
 package com.example.wbdvf19zackmartinserverjava.models;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="modules")
-public class Module {
+@Table(name="lessons")
+public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
 
-
     @ManyToOne
     @JsonIgnore
-    private Course course;
+    private Module module;
 
-    @OneToMany(mappedBy = "module", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Lesson> lessons;
+    @OneToMany(mappedBy = "lesson", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Topic> topics;
 
-    public List<Lesson> getLessons() {
-        return lessons;
+    public List<Topic> getTopics() {
+        return topics;
     }
 
-    public void setLessons(List<Lesson> lessons) {
-        this.lessons = lessons;
+    public void setTopics(List<Topic> topic) {
+        this.topics = topic;
     }
 
 
-    public Course getCourse() {
-        return course;
+    public Module getModule() {
+        return module;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setModule(Module module) {
+        this.module = module;
     }
 
     public Integer getId() {
