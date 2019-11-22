@@ -23,8 +23,7 @@ public class WidgetController {
 
     @Autowired
     TopicRepository topicRepository;
-
-
+    
     @PostMapping("/api/topics/{tid}/widgets")
     public List<Widget> createWidget(@RequestBody Widget widget,
                                      @PathVariable("tid") Integer tid) {
